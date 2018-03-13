@@ -11,7 +11,7 @@
  */
 
 
-// Set environment based on hostname
+// Set environment based on hostnam
 switch ($hostname) {
   case 'www.hdev.online':
   case '54.86.248.194':
