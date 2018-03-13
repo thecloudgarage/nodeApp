@@ -2,7 +2,7 @@
 cd /home/ec2-user/myapp/
 curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
 sudo yum install -y nodejs gcc-c++ make
-npm i
+npm install
 npm install puppeteer --unsafe-perm=true --allow-root
 cd ./node_modules/puppeteer/.local-chromium/*/chrome-linux
 sudo yum -y install cups-libs dbus-glib libXrandr libXcursor libXinerama cairo cairo-gobject pango
@@ -16,6 +16,3 @@ sudo rpm -ivh --nodeps http://dl.fedoraproject.org/pub/archive/fedora/linux/rele
 sudo rpm -ivh --nodeps http://dl.fedoraproject.org/pub/archive/fedora/linux/releases/20/Fedora/x86_64/os/Packages/l/libwayland-cursor-1.2.0-3.fc20.x86_64.rpm
 sudo rpm -ivh --nodeps http://dl.fedoraproject.org/pub/archive/fedora/linux/releases/20/Fedora/x86_64/os/Packages/g/gtk3-3.10.4-1.fc20.x86_64.rpm
 sudo rpm -ivh --nodeps http://dl.fedoraproject.org/pub/archive/fedora/linux/releases/16/Fedora/x86_64/os/Packages/gdk-pixbuf2-2.24.0-1.fc16.x86_64.rpm
-cd /home/ec2-user/myapp
-killall node
-npm start
