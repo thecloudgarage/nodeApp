@@ -14,4 +14,6 @@ permissions:
        - file
 hooks:
    AfterInstall:
-    - location: scripts/startmyapp.sh
+    - location: scripts/install-packages.sh
+   ApplicationStart:
+    - location: scripts/start-app.sh
