@@ -3,6 +3,7 @@ cd /home/ec2-user/myapp/
 curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
 sudo yum install -y nodejs gcc-c++ make
 npm install
+npm install forever -g
 npm install puppeteer --unsafe-perm=true --allow-root
 cd ./node_modules/puppeteer/.local-chromium/*/chrome-linux
 sudo yum -y install cups-libs dbus-glib libXrandr libXcursor libXinerama cairo cairo-gobject pango
