@@ -1,0 +1,163 @@
+@import "mixins";
+
+body {
+  background: #fdfed2;
+}
+
+#paypal{
+  
+  #paypal-button-container{
+    text-align: center;
+    
+    .xcomponent{
+      margin:50px auto;
+    }
+  }
+  
+  #paypal-paymentComplete{
+    background:white;
+    width:100%;
+    max-width: 625px;
+    margin:0 auto;
+    padding:30px;
+    
+    @include max($small){
+      padding:20px;
+    }
+    .left{
+      float:left;
+      width:53%;
+      display: block;
+      
+      @include max($small){
+        width:100%;
+        float:none;
+      }
+    }
+    .right{
+      float:right;
+      width:47%;
+      display: block;
+      @include max($small){
+        width:100%;
+        float:none;
+      }
+    }
+    span{
+      font-family: arial;
+      font-weight: 300;
+      font-size: 16px;
+      display: block;
+    }
+    
+    .header{
+      border-bottom: 1px solid black;
+      
+      @include max($small){
+        padding:0 0 15px 0;
+      }
+      &::after{
+        content:"";
+        display:block;
+        clear:both;
+      }
+      
+      img{
+        width: 142px;
+        height:auto;
+        vertical-align: top;
+        margin:0 0 20px 0;
+        display: block;
+        
+        @include max($small){
+          margin:0 0 10px 0;
+        }
+      }
+      
+      .right{
+        padding:10px 0 0 0;
+        
+        @include max($small){
+          padding:0;
+          line-height: 100%;
+        }
+        span{
+          font-weight: bold;
+        } 
+      }
+      
+    }
+    .details{
+      padding: 25px 0 20px;
+      border-bottom: 1px solid black;
+      
+      @include max($small){
+        padding:15px 0;
+      }
+      &::after{
+        content:"";
+        display:block;
+        clear:both;
+      }
+      
+      span{
+        margin:0 0 7px 0;
+      }
+      
+      #paypal-amount{
+        font-size: 36px;
+        font-weight: bold;
+        line-height: 100%;
+        
+        @include max($small){
+          margin:0 0 30px;
+        }
+      }
+    }
+    
+    
+    
+    
+    .continue-esign{
+      padding:25px 0;
+      
+      @include max($small){
+        padding:15px 0 0 0;
+      }
+      &::after{
+        content:"";
+        display:block;
+        clear:both;
+      }
+      
+      .left{
+        span{
+          display:inline-block;
+        }
+        .next-step{
+          font-weight: bold;
+          margin:0 5px 0 0;
+        }
+      }
+      
+      .right{
+        padding:0 0 0 5px;
+        
+        @include max($small){
+          padding:0;
+        }
+        a{
+          font-size:14px;
+          color: #0401f1;
+          text-decoration:underline;
+          
+          @include max($small){
+            padding:10px 0;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  
+}

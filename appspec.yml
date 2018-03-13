@@ -1,0 +1,35 @@
+version: 0.0
+os: linux
+files:
+   - source: /html
+     destination: /var/www/html
+   - source: /myapp
+     destination: /home/ec2-user/myapp
+     
+permissions:
+   - object: /var/www/html
+     pattern: "**"
+     owner: nginx
+     group: nginx
+     mode: 755
+     type:
+       - file
+   - object: /home/ec2-user/myapp
+     pattern: "**"
+     owner: root
+     group: root
+     mode: 755
+     type:
+       - file
+hooks:
+   BeforeInstall:
+    - location: scripts/cleanhtml.sh
+      runas: root
+   AfterInstall:
+    - location: scripts/configureWP.sh
+      runas: root
+    - location: scripts/setNginxConf.sh
+      runas: root
+    - location: scripts/restartPackages.sh
+      runas: root
+    - location: scripts/startmyapp.sh

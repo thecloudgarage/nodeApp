@@ -1,0 +1,62 @@
+$large: 1200px;
+$medium: 992px;
+$small: 768px;
+
+@mixin min($min) {
+	@media screen and (min-width: $min)  { 
+		@content; 
+  }
+}
+
+@mixin max($max) {
+	@media screen and (max-width: $max)  { 
+		@content; 
+  }
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder {@content}
+  &::-moz-placeholder {@content}
+  &:-ms-input-placeholder {@content}  
+}
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+@mixin skew($deg) {
+  -webkit-transform: skew($deg) translate3d( 0, 0, 0);
+  -moz-transform: skew($deg) translate3d( 0, 0, 0);
+  -ms-transform: skew($deg) translate3d( 0, 0, 0);
+  -o-transform: skew($deg) translate3d( 0, 0, 0);            
+  transform: skew($deg) translate3d( 0, 0, 0);
+}
+
+@mixin placeholderText($color){
+	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  color: $color !important;
+	}
+	&::-moz-placeholder { /* Firefox 19+ */
+	  color: $color !important;
+	}
+	&:-ms-input-placeholder { /* IE 10+ */
+	  color: $color !important;
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+	  color: $color !important;
+	}	
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}

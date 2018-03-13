@@ -1,0 +1,110 @@
+body {
+  background: #fdfed2; }
+
+#paypal #paypal-button-container {
+  text-align: center; }
+  #paypal #paypal-button-container .xcomponent {
+    margin: 50px auto; }
+
+#paypal #paypal-paymentComplete {
+  background: white;
+  width: 100%;
+  max-width: 625px;
+  margin: 0 auto;
+  padding: 30px; }
+  @media screen and (max-width: 768px) {
+    #paypal #paypal-paymentComplete {
+      padding: 20px; } }
+  #paypal #paypal-paymentComplete .left {
+    float: left;
+    width: 53%;
+    display: block; }
+    @media screen and (max-width: 768px) {
+      #paypal #paypal-paymentComplete .left {
+        width: 100%;
+        float: none; } }
+  #paypal #paypal-paymentComplete .right {
+    float: right;
+    width: 47%;
+    display: block; }
+    @media screen and (max-width: 768px) {
+      #paypal #paypal-paymentComplete .right {
+        width: 100%;
+        float: none; } }
+  #paypal #paypal-paymentComplete span {
+    font-family: arial;
+    font-weight: 300;
+    font-size: 16px;
+    display: block; }
+  #paypal #paypal-paymentComplete .header {
+    border-bottom: 1px solid black; }
+    @media screen and (max-width: 768px) {
+      #paypal #paypal-paymentComplete .header {
+        padding: 0 0 15px 0; } }
+    #paypal #paypal-paymentComplete .header::after {
+      content: "";
+      display: block;
+      clear: both; }
+    #paypal #paypal-paymentComplete .header img {
+      width: 142px;
+      height: auto;
+      vertical-align: top;
+      margin: 0 0 20px 0;
+      display: block; }
+      @media screen and (max-width: 768px) {
+        #paypal #paypal-paymentComplete .header img {
+          margin: 0 0 10px 0; } }
+    #paypal #paypal-paymentComplete .header .right {
+      padding: 10px 0 0 0; }
+      @media screen and (max-width: 768px) {
+        #paypal #paypal-paymentComplete .header .right {
+          padding: 0;
+          line-height: 100%; } }
+      #paypal #paypal-paymentComplete .header .right span {
+        font-weight: bold; }
+  #paypal #paypal-paymentComplete .details {
+    padding: 25px 0 20px;
+    border-bottom: 1px solid black; }
+    @media screen and (max-width: 768px) {
+      #paypal #paypal-paymentComplete .details {
+        padding: 15px 0; } }
+    #paypal #paypal-paymentComplete .details::after {
+      content: "";
+      display: block;
+      clear: both; }
+    #paypal #paypal-paymentComplete .details span {
+      margin: 0 0 7px 0; }
+    #paypal #paypal-paymentComplete .details #paypal-amount {
+      font-size: 36px;
+      font-weight: bold;
+      line-height: 100%; }
+      @media screen and (max-width: 768px) {
+        #paypal #paypal-paymentComplete .details #paypal-amount {
+          margin: 0 0 30px; } }
+  #paypal #paypal-paymentComplete .continue-esign {
+    padding: 25px 0; }
+    @media screen and (max-width: 768px) {
+      #paypal #paypal-paymentComplete .continue-esign {
+        padding: 15px 0 0 0; } }
+    #paypal #paypal-paymentComplete .continue-esign::after {
+      content: "";
+      display: block;
+      clear: both; }
+    #paypal #paypal-paymentComplete .continue-esign .left span {
+      display: inline-block; }
+    #paypal #paypal-paymentComplete .continue-esign .left .next-step {
+      font-weight: bold;
+      margin: 0 5px 0 0; }
+    #paypal #paypal-paymentComplete .continue-esign .right {
+      padding: 0 0 0 5px; }
+      @media screen and (max-width: 768px) {
+        #paypal #paypal-paymentComplete .continue-esign .right {
+          padding: 0; } }
+      #paypal #paypal-paymentComplete .continue-esign .right a {
+        font-size: 14px;
+        color: #0401f1;
+        text-decoration: underline; }
+        @media screen and (max-width: 768px) {
+          #paypal #paypal-paymentComplete .continue-esign .right a {
+            padding: 10px 0;
+            display: block; } }

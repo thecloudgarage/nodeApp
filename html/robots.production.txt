@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+
+Sitemap: https://www.good2go.com/sitemap_index.xml
