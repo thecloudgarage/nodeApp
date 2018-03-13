@@ -139,32 +139,30 @@ app.post("/chrome/g2gquote/1", async (req, res, next) => {
   await page.$eval('.submit-button', el => el.click());
 
   // Wait for success or fail
-  await page.waitForSelector("#first-zip.error, #g2g-form", {
+  await page.waitForSelector(".first-zip.error, #g2g-form[style*='height']", {
     visible: true
   });
   
   // Success
   var isSuccess = await page.evaluate(() => {
-    return document.querySelector("#g2g-form");
+    return document.querySelector("#g2g-form[style*='height']");
   });
-    
+      
   // Fail - zipError
   var zipErrorText = await page.evaluate(() => {
     var zipErrorElem = document.querySelector("label.error[for='first-zip']");
     return zipErrorElem && zipErrorElem.innerText;
   });
-
+  
   if(isSuccess){
     resMessage = "success";
     resQuoteStep = 2;
-    page.on("frameattached", async frame => {
-      await browser.disconnect();     
-      await res.json({
-        browserWSEndpoint: browserWSEndpoint,
-        message: resMessage,
-        quoteStep: resQuoteStep,
-        errorObj: resErrorArray
-      });
+    await browser.disconnect();     
+    await res.json({
+      browserWSEndpoint: browserWSEndpoint,
+      message: resMessage,
+      quoteStep: resQuoteStep,
+      errorObj: resErrorArray
     });
   }else if(zipErrorText){
     await page.screenshot({path: res.locals.ssDir + "/zipError.jpg", fullPage: true});
@@ -377,24 +375,18 @@ app.post("/chrome/g2gquote/4", async (req, res, next) => {
     await page.$eval('#ibNextPage', el => el.click());
      
     // Wait Button Hidden
-    await page.waitForSelector("#ibNextPage", {hidden:true});      
-    var buttonHandle = await page.$('#ibNextPage');
-    var html = await page.evaluate(button => button.outerHTML, buttonHandle);
-    await buttonHandle.dispose();
+    await page.waitForSelector("#ibNextPage", {hidden:true});
     
     // Loading Spinner ...
     
     // Wait Button To Reappear
     await page.waitForSelector("#ibNextPage", {visible:true});   
-    var buttonHandle = await page.$('#ibNextPage');
-    var html = await page.evaluate(button => button.outerHTML, buttonHandle);
-    await buttonHandle.dispose();
     
     // Click Next
     await page.$eval('#ibNextPage', el => el.click());
+  
     await page.waitForSelector("#CN", {
-      visible:true,
-      timeout:10000
+      visible:true
     });   
     
     // Success!
