@@ -9,14 +9,14 @@ permissions:
      pattern: "**"
      owner: root
      group: root
-     mode: 755
+     mode: 777
      type:
        - file
    - object: /home/ec2-user/myapp/public/app_screenshots
      pattern: "**"
      owner: root
      group: root
-     mode: 755
+     mode: 777
      type:
        - file
 hooks:
@@ -28,4 +28,3 @@ hooks:
       runas: root
    ApplicationStart:
     - location: scripts/start-app.sh
-      runas: root
