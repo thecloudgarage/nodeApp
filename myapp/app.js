@@ -82,7 +82,7 @@ app.use("/chrome/g2gquote/:step", async(req,res,next) => {
       console.log("Bad Endpoint Passed Through. Creating New Browser: " + browser.wsEndpoint());
     }
   }else{
-    browser = await puppeteer.launch({headless: false});
+    browser = await puppeteer.launch({headless: true});
     page = await browser.newPage();
     console.log("Endpoint Not Passed Through. Creating New Browser: " + browser.wsEndpoint());
   }
@@ -109,7 +109,7 @@ app.use("/chrome/g2gquote/:step", async(req,res,next) => {
   
   // Mkdir for screenshots
   var browserId = /\/browser\/.+$/.test(browser.wsEndpoint()) ? browser.wsEndpoint().match(/\/browser\/(.+)$/)[1]: "noId";
-  var ssdir = "./public/puppeteer_screenshots/" + browserId;
+  var ssdir = "./public/app_screenshots/" + browserId;
   fs.existsSync(ssdir) || fs.mkdirSync(ssdir);
   
   res.locals.browser = browser;
@@ -133,7 +133,7 @@ app.post("/chrome/g2gquote/1", async (req, res, next) => {
   var resQuoteStep = 1;
   
   //Fill In Initial Zip and click go
-  await page.goto("https://awsstaging.good2go.com");
+  await page.goto("https://awsdev.good2go.com");
   await page.click("#first-zip");
   await page.keyboard.type(zipcode);
   await page.$eval('.submit-button', el => el.click());
@@ -282,7 +282,7 @@ app.post("/chrome/g2gquote/3", async (req, res, next) => {
   // Chose Marital Status
   await page.waitForSelector("#ddlMarStat1");
   await page.select("#ddlMarStat1", maritalStatus);
-  
+
   // Gender
   await page.waitForSelector("[name='rGender1'][value='" + gender + "']");
   await page.click("[name='rGender1'][value='" + gender + "']");
@@ -290,13 +290,16 @@ app.post("/chrome/g2gquote/3", async (req, res, next) => {
   // Click Next
   await page.waitForSelector("#ibNextPage");
   await page.click("#ibNextPage");
-
+  
   // Wait for success or fail
   await page.waitForSelector("#REVVeh1, #ddlVLF1", {
     visible: true
-  });
+  });  
   
+  // G2GBuy Loaded 
   var success = await page.evaluate(() => document.querySelector("#ddlVLF1"));
+  
+  // G2GVeh1.aspx Vin Error
   var vinErrorText = await page.evaluate(() => {
     var vinErrorElem = document.querySelector("#REVVeh1");
     return vinErrorElem && vinErrorElem.innerText;
@@ -306,8 +309,7 @@ app.post("/chrome/g2gquote/3", async (req, res, next) => {
     resMessage = "success";
     resQuoteStep = 4;  
   }else if(vinErrorText){
-  await page.screenshot({path: res.locals.ssDir + "/vinerror.jpg", fullPage: true});
-
+    await page.screenshot({path: res.locals.ssDir + "/vinerror.jpg", fullPage: true});
     resMessage = "error";
     resQuoteStep = 3;
     resErrorArray.push({
