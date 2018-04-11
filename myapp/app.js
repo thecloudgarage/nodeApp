@@ -109,6 +109,10 @@ app.use("/chrome/g2gquote/:step", async(req,res,next) => {
   
   // Mkdir for screenshots
   var browserId = /\/browser\/.+$/.test(browser.wsEndpoint()) ? browser.wsEndpoint().match(/\/browser\/(.+)$/)[1]: "noId";
+  
+  var ssdir = "./public/app_screenshots";
+  fs.existsSync(ssdir) || fs.mkdirSync(ssdir);
+  
   var ssdir = "./public/app_screenshots/" + browserId;
   fs.existsSync(ssdir) || fs.mkdirSync(ssdir);
   
