@@ -1,4 +1,6 @@
 ec2-userData.txt
+myapp/public/app_screenshots/*
+
 # Logs
 logs
 *.log
@@ -60,4 +62,3 @@ typings/
 
 # next.js build output
 .next
-myapp/public/app_screenshots/*

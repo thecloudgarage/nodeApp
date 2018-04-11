@@ -12,6 +12,13 @@ permissions:
      mode: 755
      type:
        - file
+   - object: /home/ec2-user/myapp/public/app_screenshots
+     pattern: "**"
+     owner: root
+     group: root
+     mode: 755
+     type:
+       - file
 hooks:
    AfterInstall:
     - location: scripts/install-packages.sh
