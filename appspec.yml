@@ -28,3 +28,4 @@ hooks:
       runas: root
    ApplicationStart:
     - location: scripts/start-app.sh
+      runas: ec2-user
