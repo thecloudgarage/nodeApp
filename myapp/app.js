@@ -122,6 +122,11 @@ app.use("/chrome/g2gquote/:step", async(req,res,next) => {
   res.locals.ssDir = ssdir;
   next();
 });
+app.get("/", async (req, res, next) => {
+  res.json({
+    Hello :"Hey There!!!"
+  });
+});
 
 // Step 1
 app.post("/chrome/g2gquote/1", async (req, res, next) => {
